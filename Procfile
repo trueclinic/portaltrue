@@ -1,1 +1,1 @@
-web: gunicorn PortalTrue.wsgi
+web: gunicorn PORTALTRUE.wsgi

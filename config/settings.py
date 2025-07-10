@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-gdfjz^g8r#5rz9=ag2qqua#bens@wdry%iyj#9=b0^+d7q4nnk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'portaltrue.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://portaltrue-dc47a902ab36.herokuapp.com']
 
 
 # Application definition
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # APPS DJANGO,
-    'multiselectfield',
+    
 
     # nomedoapp.apps.NomedoAppConfig,
     'comum.apps.ComumConfig',
