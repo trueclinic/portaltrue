@@ -1,1 +1,1 @@
-web: gunicorn PORTALTRUE.wsgi
+web: gunicorn config.wsgi
