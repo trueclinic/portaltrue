@@ -20,10 +20,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('gestao/', admin.site.urls),
     path('', include('comum.urls')),
     path('', include('consulta.urls')),
+    path('', include('autenticador.urls')),
 ]
 
 admin.AdminSite.site_header = 'Portal TrueClinic'
