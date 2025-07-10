@@ -7,7 +7,7 @@ from django.db import models
 #-------------------------------- Choices -------------------------------------------------#
 status_choices = [
         ('Ativo', 'Ativo'),
-        ('Desligado', 'Desligado'),
+        ('Desativado', 'Desativado'),
     ]
 
 status_outros_choices = [
@@ -107,6 +107,7 @@ class emailstrue(models.Model):
     id                              = models.BigAutoField   (primary_key=True)
     registado                       = models.DateTimeField  (auto_now_add=True, verbose_name='Registado em:')
     editado                         = models.DateTimeField  (auto_now_add=True, verbose_name='Alterado em: ')
+    estatus_email                   = models.CharField      (max_length=15, choices=status_choices, default='em_uso', verbose_name='Estatus')
     email                           = models.EmailField     (verbose_name='E-mail')
     palavra_passe                   = models.CharField      (max_length=20, verbose_name='Palavra-Passe Inicial do Email')
     tipo_licenca                    = models.ForeignKey     ('Licencas', on_delete=models.PROTECT, verbose_name='Tipo de Licença')

@@ -7,19 +7,19 @@ class NomeExameAdmin(admin.ModelAdmin):
     list_display = ('nome_exame', 'id','registado')
 
 class UtilizadorAdmin(admin.ModelAdmin):
-    list_display = ('nome_utilizador', 'departamento_utilizador', 'utilizador_plataforma', 'id')
+    list_display = ('estatus_utilizador', 'nome_utilizador', 'departamento_utilizador', 'utilizador_plataforma', 'id')
 
 class DepartamentoAdmin(admin.ModelAdmin):
     list_display = ('nome_departamento', 'id','registado')
 
 class emailstrueAdmin(admin.ModelAdmin):
-    list_display = ('email', 'id', 'registado')
+    list_display = ('estatus_email', 'email', 'id', 'registado')
 
 class LicencasAdmin(admin.ModelAdmin):
     list_display = ('tipo_licenca', 'id', 'registado')
 
 class FornecedorAdmin(admin.ModelAdmin):
-    list_display = ('nome_fornecedor', 'id', 'registado')
+    list_display = ('estatus_fornecedor', 'nome_fornecedor', 'id', 'registado')
 
 class MarcaAdmin(admin.ModelAdmin):
     list_display = ('marca_equipamento', 'id', 'registado')
