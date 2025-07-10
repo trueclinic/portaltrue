@@ -13,7 +13,7 @@ class DepartamentoAdmin(admin.ModelAdmin):
     list_display = ('nome_departamento', 'id','registado')
 
 class emailstrueAdmin(admin.ModelAdmin):
-    list_display = ('estatus_email', 'email', 'id', 'registado')
+    list_display = ('estatus_email', 'email', 'tipo_licenca', 'id', 'registado')
 
 class LicencasAdmin(admin.ModelAdmin):
     list_display = ('tipo_licenca', 'id', 'registado')
