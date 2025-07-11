@@ -167,9 +167,9 @@ class CartaoTelemovel(models.Model):
     editado                         = models.DateTimeField  (auto_now_add=True, verbose_name='Alterado em: ')
     atribuido                       = models.ForeignKey     (Utilizador, on_delete=models.PROTECT, verbose_name='Atribuido')
     numero_telefone                 = models.CharField      (max_length=15, verbose_name='Número do Telefone')
-    numero_cartao                   = models.CharField      (max_length=15, verbose_name='Número do Cartão')
-    pin                             = models.CharField      (max_length=4, verbose_name='PIN do Cartão')
-    puk                             = models.CharField      (max_length=10, verbose_name='PUK do Cartão')
+    numero_cartao                   = models.CharField      (max_length=15, blank=True, verbose_name='Número do Cartão')
+    pin                             = models.CharField      (max_length=4, blank=True, verbose_name='PIN do Cartão')
+    puk                             = models.CharField      (max_length=10, blank=True, verbose_name='PUK do Cartão')
     # Campo derivado de outro campo
     plano                           = models.ForeignKey     (PlanosTelemoveis, on_delete=models.PROTECT, verbose_name='Plano Associado')   
 
