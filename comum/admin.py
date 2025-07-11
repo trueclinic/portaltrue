@@ -17,7 +17,7 @@ class emailstrueAdmin(admin.ModelAdmin):
     list_filter = ('tipo_licenca', 'estatus_email')
 
 class LicencasAdmin(admin.ModelAdmin):
-    list_display = ('tipo_licenca', 'id', 'registado')
+    list_display = ('tipo_licenca', 'valor', 'id', 'registado')
 
 class FornecedorAdmin(admin.ModelAdmin):
     list_display = ('estatus_fornecedor', 'nome_fornecedor', 'id', 'registado')
