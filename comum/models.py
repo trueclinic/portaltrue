@@ -215,4 +215,4 @@ class Nome_Equipamento_1(models.Model):
         verbose_name_plural = ('Nomes dos Equipamentos')
 
     def __str__(self):
-        return '{}' .format(self.nome_departamento)
+        return '{}' .format(self.nome_equipamento)
