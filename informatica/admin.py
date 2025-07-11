@@ -27,9 +27,12 @@ class InventarioAdmin(admin.ModelAdmin):
         AparelhoTelemovelInline
     ]
 
+class CartãoTelevelAdmin(admin.ModelAdmin):
+    list_display = ('atribuido', 'numero_telefone', 'id', 'registado')
+
 
 # Register your models here
 
 admin.site.register(Inventario, InventarioAdmin)
 admin.site.register(InventarioEquipamento)
-admin.site.register(CartaoTelemovel)
+admin.site.register(CartaoTelemovel, CartãoTelevelAdmin)

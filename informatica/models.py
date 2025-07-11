@@ -166,6 +166,7 @@ class CartaoTelemovel(models.Model):
     registado                       = models.DateTimeField  (auto_now_add=True, verbose_name='Registado em:')
     editado                         = models.DateTimeField  (auto_now_add=True, verbose_name='Alterado em: ')
     atribuido                       = models.ForeignKey     (Utilizador, on_delete=models.PROTECT, verbose_name='Atribuido')
+    numero_telefone                 = models.CharField      (max_length=15, verbose_name='Número do Telefone')
     numero_cartao                   = models.CharField      (max_length=15, verbose_name='Número do Cartão')
     pin                             = models.CharField      (max_length=4, verbose_name='PIN do Cartão')
     puk                             = models.CharField      (max_length=10, verbose_name='PUK do Cartão')
