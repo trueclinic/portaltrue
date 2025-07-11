@@ -208,7 +208,7 @@ class Nome_Equipamento_1(models.Model):
     id                              = models.BigAutoField   (primary_key=True)
     registado                       = models.DateTimeField  (auto_now_add=True, verbose_name='Registado em:')
     editado                         = models.DateTimeField  (auto_now_add=True, verbose_name='Alterado em: ')
-    nome_equipamento                = models.CharField      (max_length=20, unique=True)
+    nome_equipamento                = models.CharField      (max_length=20, unique=True, verbose_name='Nome do Esquipamento')
 
     class Meta:
         verbose_name = ('Nome do Equipamento')
@@ -216,3 +216,18 @@ class Nome_Equipamento_1(models.Model):
 
     def __str__(self):
         return '{}' .format(self.nome_equipamento)
+    
+#---- Sistema Operacional ----------------------------------------------------------------------------#
+class Nome_SO(models.Model):
+    #  Nome Campo                           Tipo Model              Atributos
+    id                              = models.BigAutoField   (primary_key=True)
+    registado                       = models.DateTimeField  (auto_now_add=True, verbose_name='Registado em:')
+    editado                         = models.DateTimeField  (auto_now_add=True, verbose_name='Alterado em: ')
+    nome_sistema_operacional        = models.CharField      (max_length=20, unique=True, verbose_name='Nome do Sistema Operacional')
+
+    class Meta:
+        verbose_name = ('Nome do Sistema Operacional')
+        verbose_name_plural = ('Nomes dos Sistemas Operacionais')
+
+    def __str__(self):
+        return '{}' .format(self.nome_sistema_operacional)

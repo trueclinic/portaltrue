@@ -6,7 +6,7 @@ import re
 from socket import NI_NUMERICHOST
 from threading import activeCount
 from django.db import models
-from comum.models import Marca, Modelo, emailstrue, PlanosTelemoveis, Fornecedor, Utilizador, Nome_Equipamento_1
+from comum.models import Marca, Modelo, emailstrue, PlanosTelemoveis, Fornecedor, Utilizador, Nome_Equipamento_1, Nome_SO
 
 #-------------------------------- Signals -------------------------------------------------#
 from django.db.models import signals
@@ -116,7 +116,8 @@ class InventarioEquipamento(models.Model):
     editado                         = models.DateTimeField  (auto_now_add=True, verbose_name='Alterado em: ')
     estatus_equipamento             = models.CharField      (max_length=10, choices=STATUS_CHOICES, default='em_uso', verbose_name='Estatus')
     nome_equipamento                = models.ForeignKey     (Nome_Equipamento_1, on_delete=models.PROTECT, verbose_name='Nome do Equipamento', blank=False)
-    atribuido                       = models.ForeignKey     (Utilizador, on_delete=models.PROTECT, verbose_name='Atribuido', blank=False)
+    atribuido_check                 = models.BooleanField   (default=False, verbose_name='Atribuído?')
+    atribuido                       = models.ForeignKey     (Utilizador, on_delete=models.PROTECT, blank=True, null=True, verbose_name='Utilizador')
     descricao_equipamento           = models.TextField      (verbose_name='Descrição do Equipamento', blank=True)
     nome_rede                       = models.CharField      (max_length=20, verbose_name='Nome na Rede', blank=True, unique=True)
     # Campo derivado de outro campo
@@ -124,11 +125,10 @@ class InventarioEquipamento(models.Model):
     # Campo derivado de outro campo
     modelo_esquipamento             = models.ForeignKey     (Modelo, on_delete=models.PROTECT, verbose_name='Modelo do Equipamento')
     numero_serie                    = models.CharField      (max_length=50, verbose_name='Número de Série', unique=True)
-    sistema_operacional             = models.CharField      (max_length=100, verbose_name='Sistema Operacional', blank=True)
+    sistema_operacional             = models.ForeignKey     (Nome_SO, on_delete=models.PROTECT, verbose_name='Sistema Operacional')
     memoria                         = models.CharField      (max_length=20, verbose_name='Memoria', blank=True)
-    tamanho                         = models.CharField      (max_length=20, verbose_name='Tamanho', blank=True)
     numero_ip                       = models.CharField      (max_length=50, verbose_name='Número do IP', blank=True)
-    mac                             = models.CharField      (max_length=20, verbose_name='Mac Address', blank=True)
+    mac                             = models.CharField      (max_length=30, verbose_name='Mac Address', blank=True)
     fornecedor                      = models.ForeignKey     (Fornecedor, on_delete=models.PROTECT, verbose_name='Fornecedor')
     data_compra                     = models.DateField      (auto_now_add=False, verbose_name='Data da Compra')
     data_garantia                   = models.DateField      (auto_now_add=False, verbose_name='Final da Garantia')
@@ -141,7 +141,7 @@ class InventarioEquipamento(models.Model):
         verbose_name_plural = ( 'Equipamentos TrueClinic')
 
     def __str__(self):
-        return '{} | {} | {} | {}' .format(self.nome_equipamento, self.nome_rede, self.marca_esquipamento, self.modelo_esquipamento)
+        return '{} | {} | {} | {} | {}' .format(self.atribuido, self.nome_equipamento, self.nome_rede, self.marca_esquipamento, self.modelo_esquipamento)
 
 # ---- Equipamento --------------------------------------------------------------------#
 class Equipamentos(models.Model):

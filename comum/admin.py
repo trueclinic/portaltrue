@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  NomeExame, Utilizador, Departamento, emailstrue, Licencas, Fornecedor, Marca, Modelo, PlanosTelemoveis, Nome_Equipamento_1
+from .models import  NomeExame, Utilizador, Departamento, emailstrue, Licencas, Fornecedor, Marca, Modelo, PlanosTelemoveis, Nome_Equipamento_1, Nome_SO
 
 
 #Classes do admin
@@ -48,4 +48,5 @@ admin.site.register(Marca, MarcaAdmin)
 admin.site.register(Modelo, ModeloAdmin)
 admin.site.register(PlanosTelemoveis, PlanosTelemoveisAdmin)
 admin.site.register(Nome_Equipamento_1, NomeEquipamento_1Admin)
+admin.site.register(Nome_SO)
 
