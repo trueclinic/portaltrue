@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'autenticador.middleware.session_timeout.AutoLogoutMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -143,29 +144,15 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #------Mensagens------------------#
-MESSAGE_TAGS = {
-    constants.DEBUG: 'alert-primary', 
-    constants.ERROR: 'alert-danger', 
-    constants.SUCCESS: 'alert-success', 
-    constants.INFO: 'alert-info', 
-    constants.WARNING: 'alert-warning',
-}
+
 
 # Configuração do e-mail
 
 
 # Configuração de Inatividade
 
-# Expira a sessão após 5 minutos de inatividade (300 segundos)
-SESSION_COOKIE_AGE = 300
-
-# Faz com que a sessão expire mesmo que o navegador continue aberto
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
-# Não renova o tempo de expiração a cada requisição
-SESSION_SAVE_EVERY_REQUEST = False
-
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+# Tempo de inatividade em minutos
+AUTO_LOGOUT_DELAY = 5
 
 
 django_on_heroku.settings(locals())
