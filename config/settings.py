@@ -165,5 +165,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Não renova o tempo de expiração a cada requisição
 SESSION_SAVE_EVERY_REQUEST = False
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
 
 django_on_heroku.settings(locals())
