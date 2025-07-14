@@ -154,5 +154,16 @@ MESSAGE_TAGS = {
 # Configuração do e-mail
 
 
+# Configuração de Inatividade
+
+# Expira a sessão após 5 minutos de inatividade (300 segundos)
+SESSION_COOKIE_AGE = 300
+
+# Faz com que a sessão expire mesmo que o navegador continue aberto
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Não renova o tempo de expiração a cada requisição
+SESSION_SAVE_EVERY_REQUEST = False
+
 
 django_on_heroku.settings(locals())
