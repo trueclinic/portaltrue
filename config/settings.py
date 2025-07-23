@@ -147,6 +147,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Configuração do e-mail
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'mail.wilbert.pt'  # exemplo: smtp.gmail.com ou mail.trueclinic.pt
+#EMAIL_PORT = 465
+#EMAIL_HOST_USER = 'nao-responda@trueclinic.pt'
+#EMAIL_HOST_PASSWORD = 'wEgbuf-meqgo9-kofkew'
+#EMAIL_USE_TLS = True
+#DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 # Configuração de Inatividade

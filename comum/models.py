@@ -3,6 +3,7 @@ from contextlib import ContextDecorator
 from multiprocessing.reduction import send_handle
 from xml.dom.expatbuilder import parseString
 from django.db import models
+from django.core.mail import send_mail
 
 #-------------------------------- Choices -------------------------------------------------#
 status_choices = [
@@ -106,17 +107,31 @@ class Departamento(models.Model):
 class emailstrue(models.Model):
     id                              = models.BigAutoField   (primary_key=True)
     registado                       = models.DateTimeField  (auto_now_add=True, verbose_name='Registado em:')
-    editado                         = models.DateTimeField  (auto_now_add=True, verbose_name='Alterado em: ')
+    editado                         = models.DateTimeField  (auto_now=True, verbose_name='Alterado em: ')  # corrigido para auto_now
     estatus_email                   = models.CharField      (max_length=15, choices=status_choices, default='em_uso', verbose_name='Estatus')
     email                           = models.EmailField     (verbose_name='E-mail')
     palavra_passe                   = models.CharField      (max_length=20, verbose_name='Palavra-Passe Inicial do Email')
     tipo_licenca                    = models.ForeignKey     ('Licencas', on_delete=models.PROTECT, verbose_name='Tipo de Licença')
+    caixa_compartilhada             = models.BooleanField   (default=False, verbose_name='Caixa Compartilhada?')
 
     class Meta:
         verbose_name_plural = ('Emails TrueClinic')
 
     def __str__(self):
         return '{} | {}'.format(self.email, self.tipo_licenca)
+
+    def save(self, *args, **kwargs):
+        is_new = self.pk is None  # Só envia no momento da criação
+        super().save(*args, **kwargs)
+
+        if is_new and self.email_pessoal:
+            send_mail(
+                subject='Palavra-passe do e-mail corporativo',
+                message=f'Sua palavra-passe inicial para o e-mail {self.email} é: {self.palavra_passe}',
+                from_email='nao-responda@trueclinic.pt',
+                recipient_list=[self.email_pessoal],
+                fail_silently=False,
+            )
 
 # ---- Licenças --------------------------------------------------------------------#
 class Licencas(models.Model):
