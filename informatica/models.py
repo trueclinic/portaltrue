@@ -119,12 +119,12 @@ class InventarioEquipamento(models.Model):
     atribuido_check                 = models.BooleanField   (default=False, verbose_name='Atribuído?')
     atribuido                       = models.ForeignKey     (Utilizador, on_delete=models.PROTECT, blank=True, null=True, verbose_name='Utilizador')
     descricao_equipamento           = models.TextField      (verbose_name='Descrição do Equipamento', blank=True)
-    nome_rede                       = models.CharField      (max_length=20, verbose_name='Nome na Rede', blank=False, unique=True)
+    nome_rede                       = models.CharField      (max_length=20, verbose_name='Nome na Rede', blank=True, null=True, unique=True)
     # Campo derivado de outro campo
     marca_esquipamento              = models.ForeignKey     (Marca, on_delete=models.PROTECT, verbose_name='Marca do Esquipamento')
     # Campo derivado de outro campo
     modelo_esquipamento             = models.ForeignKey     (Modelo, on_delete=models.PROTECT, verbose_name='Modelo do Equipamento')
-    numero_serie                    = models.CharField      (max_length=50, verbose_name='Número de Série', unique=True, blank=False)
+    numero_serie                    = models.CharField      (max_length=50, verbose_name='Número de Série', unique=True, blank=True, null=True)
     sistema_operacional             = models.ForeignKey     (Nome_SO, on_delete=models.PROTECT, verbose_name='Sistema Operacional')
     memoria                         = models.CharField      (max_length=20, verbose_name='Memoria', blank=True)
     numero_ip                       = models.CharField      (max_length=50, verbose_name='Número do IP', blank=True)
