@@ -1,7 +1,11 @@
 asgiref==3.9.1
+certifi==2025.7.14
+charset-normalizer==3.4.2
+cloudinary==1.44.1
 dj-database-url==3.0.1
 dj-static==0.0.6
 Django==5.2.4
+django-cloudinary-storage==0.3.0
 django-formtools==2.5.1
 django-multiselectfield==1.0.1
 django-on-heroku==1.1.2
@@ -10,6 +14,7 @@ django-otp-yubikey==1.1.0
 django-phonenumber-field==8.1.0
 django-two-factor-auth==1.17.0
 gunicorn==23.0.0
+idna==3.10
 multiselectfield==0.0.1
 packaging==25.0
 phonenumbers==9.0.9
@@ -18,8 +23,11 @@ pycryptodome==3.23.0
 pypng==0.20220715.0
 python-decouple==3.8
 qrcode==7.4.2
+requests==2.32.4
+six==1.17.0
 sqlparse==0.5.3
 static3==0.7.0
 typing_extensions==4.14.1
+urllib3==2.5.0
 whitenoise==6.9.0
 YubiOTP==1.0.0
