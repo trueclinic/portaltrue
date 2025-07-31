@@ -9,7 +9,7 @@ class NomeSinistrado(models.Model):
     registado          = models.DateTimeField  (auto_now_add=True, verbose_name='Registado em:')
     editado            = models.DateTimeField  (auto_now_add=True, verbose_name='Alterado em: ')
     nome_sinistrado    = models.CharField      (max_length=500, verbose_name='Nome do Sinistrado')
-    numero_nif         = models.CharField      (max_length=50, verbose_name='Número do NIF', unique=True, )
+    numero_nif         = models.CharField      (max_length=50, verbose_name='Número do NIF', unique=True, blank=True, )
     link_imagem        = models.CharField      (max_length=300, blank=True, verbose_name='Link das Imagens')
 
     class Meta:
