@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
-
-app_name = 'consulta'
+app_name = 'ticket'
 
 urlpatterns = [
-    path('exames/', views.lista_exames, name='lista'),
-    path('exames/novo/', views.criar_exame, name='criar'),
-    path('exames/<int:exame_id>/', views.detalhe_exame, name='detalhe'),
+    path('tickets/', views.lista_tickets, name='lista'),
+    path('tickets/novo/', views.criar_ticket, name='criar'),
+    path('tickets/<int:ticket_id>/', views.detalhe_ticket, name='detalhe'),
+    path('tickets/export/csv/', views.exportar_tickets_csv, name='export_csv'),
+    path('tickets/export/xlsx/', views.exportar_tickets_xlsx, name='export_xlsx'),
 ]

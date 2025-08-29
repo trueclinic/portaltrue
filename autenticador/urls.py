@@ -14,10 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, include
-from .views import home
+from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
+from .views import home, mfa_verificar, mfa_reenviar, debug_mfa, logout_view, dashboard
 
 app_name = 'autenticador'
 
 urlpatterns = [
     path("", home, name="home"),
+    path("mfa/verificar/", mfa_verificar, name="mfa_verificar"),
+    path("mfa/reenviar/", mfa_reenviar, name="mfa_reenviar"),
+    path("debug/mfa/", debug_mfa, name="debug_mfa"),
+    path("logout/", logout_view, name="logout"),
+    path("dashboard/", dashboard, name="dashboard"),
 ]

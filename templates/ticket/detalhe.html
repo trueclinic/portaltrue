@@ -1,0 +1,69 @@
+{% extends 'base_app.html' %}
+{% block title %}Ticket #{{ ticket.id }} · TrueClinic{% endblock %}
+{% block nav_active_tickets %}active{% endblock %}
+{% block content %}
+  {% if messages %}
+    <ul style="list-style:none;padding:0;margin:0 0 10px 0;">
+      {% for message in messages %}
+        <li style="background:#F1F9FE;border:1px solid #55bcdf;color:#1B2B45;padding:8px 10px;border-radius:10px;margin-bottom:6px;">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <div class="card">
+    <h2 style="margin-top:0">Ticket #{{ ticket.id }}</h2>
+    <p><strong>Reportado por:</strong> {{ ticket.reporter_nome|default:ticket.criado_por.username }} · {{ ticket.reporter_email|default:ticket.criado_por.email }}</p>
+    <p><strong>Atendido por:</strong> {% if ticket.atribuido_para %}{{ ticket.atribuido_para.get_full_name|default:ticket.atribuido_para.username }}{% else %}-{% endif %}</p>
+    <p><strong>Título:</strong> {{ ticket.titulo }}</p>
+    <p><strong>Descrição:</strong><br>{{ ticket.descricao|linebreaks }}</p>
+    <p><strong>Prioridade:</strong> {{ ticket.get_prioridade_display }}</p>
+    <p><strong>Status:</strong> {{ ticket.get_status_display }}</p>
+  </div>
+
+  {% if request.user.is_staff %}
+  <div class="card" style="margin-top:12px">
+    <h3 style="margin-top:0">Atualizar</h3>
+    <form method="post">
+      {% csrf_token %}
+      {{ u_form.as_p }}
+      <button class="btn" type="submit">Guardar</button>
+    </form>
+  </div>
+  {% endif %}
+
+  <div class="card" style="margin-top:12px">
+    <h3 style="margin-top:0">Comentários</h3>
+    <div>
+      {% for c in ticket.comentarios.all %}
+        <div style="border-bottom:1px solid #ECECEC;padding:8px 0">
+          <div style="font-size:13px;color:#1B2B45">{{ c.autor }} · {{ c.criado_em }}</div>
+          <div>{{ c.mensagem|linebreaks }}</div>
+        </div>
+      {% empty %}
+        <p>Sem comentários.</p>
+      {% endfor %}
+    </div>
+    <form method="post" style="margin-top:8px">
+      {% csrf_token %}
+      {{ c_form.as_p }}
+      <button class="btn" type="submit">Comentar</button>
+    </form>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3 style="margin-top:0">Anexos</h3>
+    <ul>
+      {% for a in ticket.anexos.all %}
+        <li><a href="{{ a.ficheiro.url }}" target="_blank">{{ a.ficheiro.name }}</a> ({{ a.enviado_em }})</li>
+      {% empty %}
+        <li>Sem anexos.</li>
+      {% endfor %}
+    </ul>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ a_form.as_p }}
+      <button class="btn" type="submit">Enviar anexo</button>
+    </form>
+  </div>
+
+  <p style="margin-top:12px"><a class="btn btn-secondary" href="{% url 'ticket:lista' %}">Voltar</a></p>
+{% endblock %}

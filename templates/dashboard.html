@@ -1,0 +1,57 @@
+{% extends 'base_app.html' %}
+{% block title %}Dashboard · TrueClinic{% endblock %}
+{% block nav_active_dashboard %}active{% endblock %}
+{% block extra_head %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+{% endblock %}
+{% block content %}
+  <div class="kpi-grid">
+    <a class="kpi-card" href="/tickets/" style="text-decoration:none;color:inherit">
+      <div class="ico">🎫</div>
+      <div class="meta"><div class="val">{{ tickets_abertos }}</div><div class="lbl">Tickets abertos</div></div>
+    </a>
+    <a class="kpi-card" href="/exames/" style="text-decoration:none;color:inherit">
+      <div class="ico">🧪</div>
+      <div class="meta"><div class="val">{{ exames_total }}</div><div class="lbl">Exames registados</div></div>
+    </a>
+  </div>
+  <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:16px;align-items:start">
+    <div class="card">
+      <h3 style="margin:0 0 6px">Relatórios de tickets</h3>
+      <div class="chart-area"><canvas id="chartStatus"></canvas></div>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 6px">Distribuição de tickets</h3>
+      <div class="chart-area"><canvas id="chartPri"></canvas></div>
+    </div>
+  </div>
+{% endblock %}
+{% block extra_js %}
+<script>
+  (function(){
+    const statusData = {
+      labels: ['Aberto','Em andamento','Resolvido','Fechado'],
+      datasets: [{
+        data: [{{ status_counts.aberto }}, {{ status_counts.em_andamento }}, {{ status_counts.resolvido }}, {{ status_counts.fechado }}],
+        backgroundColor: ['#4dabf7','#ffe08a','#63e6be','#ced4da'],
+        borderWidth: 0
+      }]
+    };
+    const isDark = document.documentElement.classList.contains('dark');
+    const baseOpts = {maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'bottom', labels:{color:getComputedStyle(document.documentElement).getPropertyValue('--chartText')}}}};
+    new Chart(document.getElementById('chartStatus'), {type:'doughnut', data: statusData, options: baseOpts});
+
+    const priData = {
+      labels: ['Alta','Média','Baixa'],
+      datasets: [{
+        data: [{{ prioridade_counts.alta }}, {{ prioridade_counts.media }}, {{ prioridade_counts.baixa }}],
+        backgroundColor: ['#ff6b6b','#ffd43b','#69db7c'],
+        borderWidth: 0
+      }]
+    };
+    new Chart(document.getElementById('chartPri'), {type:'doughnut', data: priData, options: baseOpts});
+  })();
+</script>
+{% endblock %}
+
+

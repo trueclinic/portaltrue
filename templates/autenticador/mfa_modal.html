@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verificação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:'Plus Jakarta Sans',Arial,sans-serif;background:#F1F9FE;color:#1B2B45}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;padding:16px}
+    .card{max-width:420px;width:100%;background:#fff;border:1px solid #55bcdf;border-radius:16px;padding:24px;box-shadow:0 12px 28px rgba(0,0,0,.15)}
+    label{display:block;margin-bottom:6px;font-weight:700;color:#1d5d9a}
+    input{width:100%;padding:12px 14px;border:1px solid #55bcdf;border-radius:12px;font-size:18px;letter-spacing:2px;text-align:center}
+    .row{margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .btn{background:#1d5d9a;color:#fff;border:none;padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:700}
+    .btn-sec{background:#fff;color:#1d5d9a;border:1px solid #1d5d9a}
+    .muted{opacity:.75}
+  </style>
+</head>
+<body>
+  <div class="modal">
+    <div class="card">
+      <h2 style="margin:0 0 8px;color:#1d5d9a">Verificação de segurança</h2>
+      <p class="muted" style="margin:0 0 12px">Introduza o código enviado ao seu e‑mail.</p>
+      <form method="post">
+        {% csrf_token %}
+        <label for="code">Código</label>
+        <input id="code" name="code" maxlength="6" autocomplete="one-time-code" />
+        <div class="row">
+          <button class="btn" type="submit">Confirmar</button>
+          <button id="btn-reenviar" class="btn btn-sec" formaction="{% url 'autenticador:mfa_reenviar' %}" disabled>Reenviar</button>
+          <span id="timer" class="muted">02:00</span>
+        </div>
+        <p class="muted" style="margin-top:8px">Se não recebeu, aguarde o temporizador para reenviar.</p>
+        {% if debug and debug_code %}
+          <p class="muted" style="margin-top:8px">Código (dev): <strong>{{ debug_code }}</strong></p>
+        {% endif %}
+      </form>
+      <p class="muted" style="margin-top:10px">Sem acesso ao e‑mail? <a href="{% url 'autenticador:home' %}">Voltar</a></p>
+      <p class="muted" style="margin-top:10px">Ambiente de desenvolvimento: <a href="{% url 'autenticador:debug_mfa' %}" target="_blank" rel="noopener">ver código</a></p>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var total = {{ seconds_left|default:120 }};
+      var span = document.getElementById('timer');
+      var btn = document.getElementById('btn-reenviar');
+      function tick(){
+        var m = String(Math.floor(total/60)).padStart(2,'0');
+        var s = String(total%60).padStart(2,'0');
+        span.textContent = m+':'+s;
+        if(total<=0){ btn.disabled = false; return; }
+        total--; setTimeout(tick,1000);
+      }
+      tick();
+    })();
+  </script>
+</body>
+</html>

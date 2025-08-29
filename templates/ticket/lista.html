@@ -1,0 +1,96 @@
+{% extends 'base_app.html' %}
+{% block title %}Tickets · TrueClinic{% endblock %}
+{% block nav_active_tickets %}active{% endblock %}
+{% block content %}
+  <div class="card" style="margin-bottom:12px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+    <h2 style="margin:0">Tickets</h2>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="btn btn-secondary" href="{% url 'ticket:export_csv' %}?status={{ f_status }}&prioridade={{ f_prioridade }}&q={{ f_q }}&assigned={{ assigned }}">Exportar CSV</a>
+      <a class="btn btn-secondary" href="{% url 'ticket:export_xlsx' %}?status={{ f_status }}&prioridade={{ f_prioridade }}&q={{ f_q }}&assigned={{ assigned }}">Exportar XLSX</a>
+      <a class="btn" href="{% url 'ticket:criar' %}">Novo ticket</a>
+    </div>
+  </div>
+  <div class="kpi-grid" style="margin-bottom:8px">
+    <div class="kpi-card"><div class="ico">🎫</div><div class="meta"><div class="val">{{ status_counts.aberto|default:0 }}</div><div class="lbl">Abertos</div></div></div>
+    <div class="kpi-card"><div class="ico">🛠</div><div class="meta"><div class="val">{{ status_counts.em_andamento|default:0 }}</div><div class="lbl">Em andamento</div></div></div>
+    <div class="kpi-card"><div class="ico">✅</div><div class="meta"><div class="val">{{ status_counts.resolvido|default:0 }}</div><div class="lbl">Resolvidos</div></div></div>
+    <div class="kpi-card"><div class="ico">⚠</div><div class="meta"><div class="val">{{ prioridade_counts.alta|default:0 }}</div><div class="lbl">Alta prioridade</div></div></div>
+  </div>
+  <form method="get" class="card" style="margin-bottom:12px;display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+    <div>
+      <label>Status</label>
+      <select name="status">
+        <option value="">Todos</option>
+        <option value="aberto" {% if f_status == 'aberto' %}selected{% endif %}>Aberto</option>
+        <option value="em_andamento" {% if f_status == 'em_andamento' %}selected{% endif %}>Em andamento</option>
+        <option value="resolvido" {% if f_status == 'resolvido' %}selected{% endif %}>Resolvido</option>
+        <option value="fechado" {% if f_status == 'fechado' %}selected{% endif %}>Fechado</option>
+      </select>
+    </div>
+    <div>
+      <label>Prioridade</label>
+      <select name="prioridade">
+        <option value="">Todas</option>
+        <option value="baixa" {% if f_prioridade == 'baixa' %}selected{% endif %}>Baixa</option>
+        <option value="media" {% if f_prioridade == 'media' %}selected{% endif %}>Média</option>
+        <option value="alta" {% if f_prioridade == 'alta' %}selected{% endif %}>Alta</option>
+      </select>
+    </div>
+    {% if request.user.is_staff %}
+    <div>
+      <label>Atribuição</label>
+      <select name="assigned">
+        <option value="" {% if not assigned %}selected{% endif %}>Todos</option>
+        <option value="me" {% if assigned == 'me' %}selected{% endif %}>Atribuídos a mim</option>
+        <option value="unassigned" {% if assigned == 'unassigned' %}selected{% endif %}>Sem atribuição</option>
+      </select>
+    </div>
+    {% endif %}
+    <div style="flex:1">
+      <label>Busca</label>
+      <input type="text" name="q" value="{{ f_q }}" placeholder="título ou descrição" />
+    </div>
+    <button class="btn" type="submit">Filtrar</button>
+    <a class="btn btn-secondary" href="?">Limpar</a>
+  </form>
+  <table class="table">
+    <thead>
+      <tr><th>Título</th><th>Reportado por</th><th>Atendido por</th><th>Prioridade</th><th>Status</th><th>Criado em</th><th>Última interação</th></tr>
+    </thead>
+    <tbody>
+    {% for t in tickets %}
+      <tr>
+        <td><a href="{% url 'ticket:detalhe' t.id %}">{{ t.titulo }}</a></td>
+        <td>{{ t.reporter_nome|default:t.criado_por.username }}<br/><small>{{ t.reporter_email|default:t.criado_por.email }}</small></td>
+        <td>{% if t.atribuido_para %}{{ t.atribuido_para.get_full_name|default:t.atribuido_para.username }}{% else %}-{% endif %}</td>
+        <td>
+          {% if t.prioridade == 'alta' %}<span class="badge badge-pri-high">Alta</span>
+          {% elif t.prioridade == 'media' %}<span class="badge badge-pri-medium">Média</span>
+          {% else %}<span class="badge badge-pri-low">Baixa</span>{% endif %}
+        </td>
+        <td>
+          {% if t.status == 'aberto' %}<span class="badge badge-open">Aberto</span>
+          {% elif t.status == 'em_andamento' %}<span class="badge badge-progress">Em andamento</span>
+          {% elif t.status == 'resolvido' %}<span class="badge badge-resolved">Resolvido</span>
+          {% else %}<span class="badge badge-closed">Fechado</span>{% endif %}
+        </td>
+        <td>{{ t.criado_em }}</td>
+        <td>{{ t.ultima_interacao }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="8">Sem tickets.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% if paginator.num_pages > 1 %}
+    <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+      {% if page_obj.has_previous %}
+        <a class="btn btn-secondary" href="?page={{ page_obj.previous_page_number }}&status={{ f_status }}&prioridade={{ f_prioridade }}&q={{ f_q }}&assigned={{ assigned }}">Anterior</a>
+      {% endif %}
+      <span>Página {{ page_obj.number }} de {{ paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+        <a class="btn btn-secondary" href="?page={{ page_obj.next_page_number }}&status={{ f_status }}&prioridade={{ f_prioridade }}&q={{ f_q }}&assigned={{ assigned }}">Seguinte</a>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}

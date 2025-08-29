@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('comum.urls')),
     path('', include('consulta.urls')),
     path('', include('autenticador.urls')),
+    path('', include('ticket.urls')),
     
 ]
 

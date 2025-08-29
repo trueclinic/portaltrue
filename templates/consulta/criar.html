@@ -1,0 +1,126 @@
+{% extends 'base_app.html' %}
+{% block title %}Novo Exame · TrueClinic{% endblock %}
+{% block nav_active_exames %}active{% endblock %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin-top:0">Adicionar nome sinistrado</h2>
+    {% if messages %}
+      <ul style="list-style:none;padding:0;margin:0 0 10px 0;">
+        {% for message in messages %}
+          <li style="background:#F1F9FE;border:1px solid #55bcdf;color:#1B2B45;padding:8px 10px;border-radius:10px;margin-bottom:6px;">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <div class="grupo">
+        <label>Nome do Sinistrado:</label>
+        {{ sin_form.nome_sinistrado }}
+      </div>
+      <div class="grupo">
+        <label>Número do NIF:</label>
+        {{ sin_form.numero_nif }}
+      </div>
+      <div class="grupo">
+        <label>Link das Imagens:</label>
+        {{ sin_form.link_imagem }}
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3 style="margin:0 0 10px">REGISTOS DOS EXAMES</h3>
+        {{ formset.management_form }}
+        <table class="table">
+          <thead>
+            <tr><th>Data do Exame</th><th>Nome do Exame</th><th>Caixa do Exame</th><th></th></tr>
+          </thead>
+          <tbody id="exames-rows">
+          {% for f in formset.forms %}
+            <tr class="exame-row">
+              <td><input type="date" name="{{ f.data_exame.name }}" id="{{ f.data_exame.id_for_label }}" value="{{ f.data_exame.value|default:'' }}" /></td>
+              <td>{{ f.nome_exame }}</td>
+              <td>{{ f.caixa }}</td>
+              <td><button type="button" class="btn btn-secondary btn-del" title="Remover" aria-label="Remover">🗑️</button> <button type="button" class="btn btn-secondary btn-edit" disabled title="Editar" aria-label="Editar">✏️</button></td>
+            </tr>
+          {% endfor %}
+          <!-- protótipo do empty_form para clone dinâmico -->
+          <tr id="empty-form-prototype" style="display:none">
+            <td><input type="date" name="{{ formset.empty_form.data_exame.name }}" id="{{ formset.empty_form.data_exame.id_for_label }}" /></td>
+            <td>{{ formset.empty_form.nome_exame }}</td>
+            <td>{{ formset.empty_form.caixa }}</td>
+            <td><button type="button" class="btn btn-secondary btn-del" title="Remover" aria-label="Remover">🗑️</button> <button type="button" class="btn btn-secondary btn-edit" disabled title="Editar" aria-label="Editar">✏️</button></td>
+          </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-secondary" type="button" id="add-row">Adicionar outro Registo exames</button>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button class="btn" type="submit">Gravar</button>
+        <a class="btn btn-secondary" href="{% url 'consulta:lista' %}">Voltar</a>
+      </div>
+    </form>
+  </div>
+
+  <template id="empty-form-template">
+    <tr class="exame-row">
+      <td>__data__</td>
+      <td>__nomeexame__</td>
+      <td>__caixa__</td>
+      <td></td>
+    </tr>
+  </template>
+{% endblock %}
+{% block extra_js %}
+<script>
+(function(){
+  // Clona formulário vazio do formset substituindo __prefix__ pelo próximo índice
+  const addBtn = document.getElementById('add-row');
+  if(!addBtn) return;
+  addBtn.addEventListener('click', function(){
+    const totalInput = document.getElementById('id_exames-TOTAL_FORMS');
+    const idx = parseInt(totalInput.value, 10);
+    const tbody = document.getElementById('exames-rows');
+
+    const proto = document.getElementById('empty-form-prototype');
+    const clone = proto.cloneNode(true);
+    clone.style.display = '';
+    clone.removeAttribute('id');
+    const emptyPrefix = '__prefix__';
+    clone.querySelectorAll('[id]').forEach(function(el){
+      el.id = el.id.replaceAll(emptyPrefix, idx);
+    });
+    clone.querySelectorAll('[name]').forEach(function(el){
+      el.name = el.name.replaceAll(emptyPrefix, idx);
+    });
+    tbody.appendChild(clone);
+    totalInput.value = idx + 1;
+  });
+
+  // Delegação para remover linha ao clicar no ícone de lixeira
+  document.getElementById('exames-rows')?.addEventListener('click', function(e){
+    const btn = e.target.closest('.btn-del');
+    if(!btn) return;
+    const tr = btn.closest('tr');
+    tr?.remove();
+    const totalInput = document.getElementById('id_exames-TOTAL_FORMS');
+    totalInput.value = Math.max(0, parseInt(totalInput.value||'0',10) - 1);
+  });
+
+  // Máscara simples para NIF: 000.000.000
+  const nif = document.getElementById('{{ sin_form.numero_nif.id_for_label }}');
+  if(nif){
+    nif.maxLength = 11;
+    nif.addEventListener('input', function(){
+      let v = nif.value.replace(/\D/g,'').slice(0,9);
+      const parts = [];
+      if(v.length>0) parts.push(v.slice(0,3));
+      if(v.length>3) parts.push(v.slice(3,6));
+      if(v.length>6) parts.push(v.slice(6,9));
+      nif.value = parts.join('.');
+    });
+  }
+})();
+</script>
+{% endblock %}
+
+

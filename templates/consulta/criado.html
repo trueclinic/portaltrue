@@ -1,0 +1,20 @@
+{% extends 'base_app.html' %}
+{% block title %}Exame criado · TrueClinic{% endblock %}
+{% block nav_active_exames %}active{% endblock %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin-top:0">Exame criado com sucesso</h2>
+    <p>
+      ID: <a href="{% url 'consulta:detalhe' exame.id %}">#{{ exame.id }}</a>
+    </p>
+    <p>
+      <a class="btn" href="{% url 'consulta:lista' %}">Voltar à lista</a>
+      <a class="btn btn-secondary" href="{% url 'consulta:criar' %}">Criar outro</a>
+    </p>
+  </div>
+{% endblock %}
+
+
+
+
+

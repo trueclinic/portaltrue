@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'consulta.apps.ConsultaConfig',
     'informatica.apps.InformaticaConfig',
     'autenticador.apps.AutenticadorConfig',
+    'ticket.apps.TicketConfig',
 ]
 
 # Middleware
@@ -126,8 +127,23 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # ID automático
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Tempo de inatividade
-AUTO_LOGOUT_DELAY = 5
+# Tempo de inatividade (minutos)
+AUTO_LOGOUT_DELAY = 10
 
 # Heroku config
 django_on_heroku.settings(locals())
+
+
+# Enviar e-mail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.outlook.office365.com'  
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'suportetecnico@trueclinic.pt'
+EMAIL_HOST_PASSWORD = 'kywvrvkmlqckzjzl'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'suportetecnico@trueclinic.pt'
+
+# Redirecionamentos de autenticação
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

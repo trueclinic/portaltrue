@@ -1,0 +1,26 @@
+{% extends 'base_app.html' %}
+{% block title %}Novo Ticket · TrueClinic{% endblock %}
+{% block nav_active_tickets %}active{% endblock %}
+{% block content %}
+  <div class="card">
+    <h2 style="margin-top:0">Novo Ticket</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <p>
+        <label>Nome</label><br/>
+        <input type="text" value="{{ request.user.get_full_name|default:request.user.username }}" disabled />
+      </p>
+      <p>
+        <label>Email</label><br/>
+        <input type="email" value="{{ request.user.email }}" disabled />
+      </p>
+      {{ form.as_p }}
+      <p>
+        <label for="id_ficheiro">Anexo (opcional)</label><br/>
+        <input type="file" name="ficheiro" id="id_ficheiro" />
+      </p>
+      <button class="btn" type="submit">Criar</button>
+      <a class="btn btn-secondary" href="{% url 'ticket:lista' %}">Voltar</a>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}TrueClinic{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'CSS/app.css' %}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <aside class="tc-sidebar">
+    <div class="tc-brand">
+      <img src="{% static 'img/Logo_05.png' %}" alt="TrueClinic" />
+    </div>
+    <nav class="tc-nav">
+      <a href="/dashboard/" class="tc-nav-item {% block nav_active_dashboard %}{% endblock %}">
+        <span class="tc-ico"><img src="{% static 'img/icons/dashboard.svg' %}" alt=""/></span> <span class="tc-label">Dashboard</span>
+      </a>
+      <a href="/exames/" class="tc-nav-item {% block nav_active_exames %}{% endblock %}">
+        <span class="tc-ico"><img src="{% static 'img/icons/exames.svg' %}" alt=""/></span> <span class="tc-label">Exames</span>
+      </a>
+      <a href="/tickets/" class="tc-nav-item {% block nav_active_tickets %}{% endblock %}">
+        <span class="tc-ico"><img src="{% static 'img/icons/tickets.svg' %}" alt=""/></span> <span class="tc-label">Tickets</span>
+      </a>
+      <a href="/informatica/" class="tc-nav-item {% block nav_active_informatica %}{% endblock %}">
+        <span class="tc-ico"><img src="{% static 'img/icons/informatica.svg' %}" alt=""/></span> <span class="tc-label">Informática</span>
+      </a>
+      
+    </nav>
+    <div class="tc-collapse">
+      <button id="sidebarToggle2" class="collapse-btn" title="Colapsar/Expandir">⇔</button>
+    </div>
+    <div class="tc-bottom">
+      <a href="/logout/" class="tc-logout">Sair</a>
+    </div>
+  </aside>
+  <main class="tc-main">
+    <header class="tc-header">
+      <div class="tc-search"></div>
+      <div class="tc-user">
+        {% if request.user.is_staff %}<span class="badge-role badge-tech">Técnico</span>{% endif %}
+        <div class="avatar">{{ request.user.first_name|default:request.user.username|first|upper }}</div>
+        {{ request.user.get_full_name|default:request.user.username }}
+        <div class="theme-toggle" style="margin-left:10px">
+          <span>🌞</span>
+          <input id="themeToggle" class="toggle" type="checkbox" />
+          <span>🌙</span>
+        </div>
+        <button id="sidebarToggle" class="btn btn-secondary" style="margin-left:8px">≡</button>
+      </div>
+    </header>
+    <section class="tc-content">
+      {% block content %}{% endblock %}
+    </section>
+  </main>
+  {% block extra_js %}{% endblock %}
+  <script>
+  (function(){
+    const key = 'tc_theme_dark';
+    const apply = (isDark)=>{ document.documentElement.classList.toggle('dark', !!isDark); toggle.checked = !!isDark; };
+    const toggle = document.getElementById('themeToggle');
+    apply(localStorage.getItem(key)==='1');
+    toggle?.addEventListener('change', ()=>{ localStorage.setItem(key, toggle.checked?'1':'0'); apply(toggle.checked); });
+
+    const body = document.documentElement; const k2='tc_sidebar_collapsed';
+    const applySb=(v)=>{ body.classList.toggle('sidebar-collapsed', !!v) };
+    applySb(localStorage.getItem(k2)==='1');
+    function toggleSb(){ const nv = !(localStorage.getItem(k2)==='1'); localStorage.setItem(k2, nv?'1':'0'); applySb(nv); }
+    document.getElementById('sidebarToggle')?.addEventListener('click', toggleSb);
+    document.getElementById('sidebarToggle2')?.addEventListener('click', toggleSb);
+  })();
+  </script>
+</body>
+</html>
