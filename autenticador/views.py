@@ -6,6 +6,7 @@ from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from ticket.models import Ticket
 from consulta.models import RegistoExames
 
@@ -165,3 +166,24 @@ def dashboard(request):
         'exames_total': RegistoExames.objects.count(),
     }
     return render(request, 'dashboard.html', context)
+
+
+@staff_member_required
+def admin_send_test_email(request):
+    """Endpoint protegido no admin para envio de e-mail de teste.
+    Use parâmetro opcional "to" em querystring para definir o destinatário.
+    Ex.: /admin/enviar-email-teste/?to=alguem@dominio.pt
+    """
+    recipient = request.GET.get('to') or settings.EMAIL_HOST_USER
+    try:
+        send_mail(
+            subject='[PortalTrue] Teste via Admin',
+            message='Envio de teste de e-mail disparado pelo endpoint do admin.',
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[recipient],
+            fail_silently=False,
+        )
+        messages.success(request, f'E-mail de teste enviado para {recipient}.')
+    except Exception as exc:
+        messages.error(request, f'Falha ao enviar e-mail: {type(exc).__name__}: {exc}')
+    return redirect('/admin/')

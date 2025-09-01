@@ -5,17 +5,18 @@ from django.contrib.auth.models import User
 from ticket.models import Ticket
 from django.core.mail import send_mail
 from django.conf import settings
+from decouple import config
 
 def processar_emails():
-    # Configuração do e-mail
-    HOST = 'outlook.office365.com'  # ou outro endereço IMAP
-    EMAIL = 'suportetecnico@trueclinic.pt'
-    SENHA = 'kywvrvkmlqckzjzl'
+    # Configuração do e-mail (parametrizada via env)
+    HOST = config('IMAP_HOST', default='outlook.office365.com')
+    EMAIL = config('IMAP_USER', default=settings.EMAIL_HOST_USER)
+    SENHA = config('IMAP_PASSWORD')
 
     # Conectar ao servidor IMAP
     mail = imaplib.IMAP4_SSL(HOST)
     mail.login(EMAIL, SENHA)
-    mail.select('inbox')
+    mail.select('INBOX')
 
     # Buscar e-mails não lidos
     status, messages = mail.search(None, '(UNSEEN)')
@@ -31,13 +32,22 @@ def processar_emails():
         body = ""
 
         if msg.is_multipart():
+            # Prioriza text/plain; se não houver, tenta text/html como fallback simples
             for part in msg.walk():
                 content_type = part.get_content_type()
                 if content_type == 'text/plain':
-                    body = part.get_payload(decode=True).decode()
+                    body = part.get_payload(decode=True).decode(errors='ignore')
                     break
+            if not body:
+                for part in msg.walk():
+                    if part.get_content_type() == 'text/html':
+                        html = part.get_payload(decode=True).decode(errors='ignore')
+                        # Remoção simples de tags para extrair texto
+                        body = email.utils.unquote(html)
+                        break
         else:
-            body = msg.get_payload(decode=True).decode()
+            payload = msg.get_payload(decode=True)
+            body = (payload.decode(errors='ignore') if isinstance(payload, (bytes, bytearray)) else str(payload))
 
         # Verifica se o remetente está registado
         try:

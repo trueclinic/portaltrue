@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
-from .views import home, mfa_verificar, mfa_reenviar, debug_mfa, logout_view, dashboard
+from .views import home, mfa_verificar, mfa_reenviar, debug_mfa, logout_view, dashboard, admin_send_test_email
 
 app_name = 'autenticador'
 
@@ -27,4 +27,5 @@ urlpatterns = [
     path("debug/mfa/", debug_mfa, name="debug_mfa"),
     path("logout/", logout_view, name="logout"),
     path("dashboard/", dashboard, name="dashboard"),
+    path("admin/enviar-email-teste/", admin_send_test_email, name="admin_send_test_email"),
 ]
