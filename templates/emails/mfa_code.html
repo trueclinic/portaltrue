@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Código de verificação</title>
+  <style>
+    body{margin:0;background:#f6f9fc;font-family:Arial,Helvetica,sans-serif;color:#1B2B45}
+    .wrap{padding:24px}
+    .card{max-width:520px;margin:0 auto;background:#ffffff;border:1px solid #e7f1fb;border-radius:12px;overflow:hidden}
+    .hdr{background:#1d5d9a;color:#fff;padding:16px 20px;font-weight:bold}
+    .cnt{padding:20px}
+    .code{font-size:28px;letter-spacing:4px;font-weight:bold;background:#eef6ff;border:1px dashed #55bcdf;padding:8px 14px;border-radius:8px;display:inline-block}
+    .muted{color:#5b6b82;font-size:13px;margin-top:14px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="hdr">Portal TrueClinic</div>
+      <div class="cnt">
+        <p>O seu código de verificação é:</p>
+        <p><span class="code">{{ code }}</span></p>
+        <p class="muted">O código expira em alguns minutos.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
@@ -39,17 +39,17 @@ def home(request):
         request.session['mfa_code'] = code
         request.session['mfa_expires'] = __import__('time').time() + 120  # 2 minutos
         request.session['mfa_attempts'] = 0
-        # Enviar código (em dev pode falhar SMTP; ok mostrar em /debug/mfa/)
+        # Enviar código (com template HTML)
         try:
-            send_mail(
-                subject='Seu código de verificação',
-                message=f'Seu código é: {code}',
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[email],
-                fail_silently=True,
-            )
+            subject = 'Seu código de verificação'
+            text = f'Seu código é: {code}'
+            html = __import__('django').template.loader.render_to_string('emails/mfa_code.html', {'code': code})
+            msg = EmailMultiAlternatives(subject, text, settings.DEFAULT_FROM_EMAIL, [email])
+            msg.attach_alternative(html, 'text/html')
+            msg.send(fail_silently=not settings.DEBUG)
         except Exception:
-            pass
+            if settings.DEBUG:
+                raise
         return redirect('autenticador:mfa_verificar')
     return render(request, "autenticador/home.html")
 
@@ -118,15 +118,15 @@ def mfa_reenviar(request):
     request.session['mfa_expires'] = __import__('time').time() + 120
     request.session['mfa_attempts'] = 0
     try:
-        send_mail(
-            subject='Seu código de verificação',
-            message=f'Seu código é: {code}',
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-            fail_silently=True,
-        )
+        subject = 'Seu código de verificação'
+        text = f'Seu código é: {code}'
+        html = __import__('django').template.loader.render_to_string('emails/mfa_code.html', {'code': code})
+        msg = EmailMultiAlternatives(subject, text, settings.DEFAULT_FROM_EMAIL, [user.email])
+        msg.attach_alternative(html, 'text/html')
+        msg.send(fail_silently=not settings.DEBUG)
     except Exception:
-        pass
+        if settings.DEBUG:
+            raise
     messages.success(request, 'Código reenviado.')
     return redirect('autenticador:mfa_verificar')
 
