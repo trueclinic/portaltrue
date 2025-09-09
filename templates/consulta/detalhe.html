@@ -28,6 +28,14 @@
         <strong>Caixa</strong>
         <div>{{ exame.caixa }}</div>
       </div>
+      <div>
+        <strong>Imagens</strong>
+        <div>
+          {% if exame.nome_sinistrado.link_imagem %}
+            <a class="btn btn-secondary" href="{{ exame.nome_sinistrado.link_imagem }}" target="_blank">Abrir imagens</a>
+          {% else %}-{% endif %}
+        </div>
+      </div>
     </div>
   </div>
 

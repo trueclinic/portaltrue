@@ -37,7 +37,7 @@
 
   <table class="table">
     <thead>
-      <tr><th>Sinistrado</th><th>Data</th><th>Exame</th><th>NIF</th><th>Caixa</th></tr>
+      <tr><th>Sinistrado</th><th>Data</th><th>Exame</th><th>NIF</th><th>Caixa</th><th>Imagens</th></tr>
     </thead>
     <tbody>
     {% for e in exames %}
@@ -47,9 +47,14 @@
         <td>{{ e.nome_exame.nome_exame }}</td>
         <td>{{ e.nome_sinistrado.numero_nif }}</td>
         <td>{{ e.caixa }}</td>
+        <td>
+          {% if e.nome_sinistrado.link_imagem %}
+            <a href="{{ e.nome_sinistrado.link_imagem }}" target="_blank">Abrir</a>
+          {% else %}-{% endif %}
+        </td>
       </tr>
     {% empty %}
-      <tr><td colspan="6">Sem registos.</td></tr>
+      <tr><td colspan="7">Sem registos.</td></tr>
     {% endfor %}
     </tbody>
   </table>

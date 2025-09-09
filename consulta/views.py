@@ -129,9 +129,9 @@ def exportar_exames_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="exames.csv"'
     writer = csv.writer(response)
-    writer.writerow(['ID', 'Data', 'Exame', 'Sinistrado', 'NIF', 'Caixa'])
+    writer.writerow(['ID', 'Data', 'Exame', 'Sinistrado', 'NIF', 'Caixa', 'Link imagens'])
     for e in qs:
-        writer.writerow([e.id, e.data_exame, getattr(e.nome_exame, 'nome_exame', ''), e.nome_sinistrado.nome_sinistrado, e.nome_sinistrado.numero_nif, e.caixa])
+        writer.writerow([e.id, e.data_exame, getattr(e.nome_exame, 'nome_exame', ''), e.nome_sinistrado.nome_sinistrado, e.nome_sinistrado.numero_nif, e.caixa, e.nome_sinistrado.link_imagem])
     return response
 
 
@@ -141,9 +141,9 @@ def exportar_exames_xlsx(request):
     wb = Workbook()
     ws = wb.active
     ws.title = 'Exames'
-    ws.append(['ID', 'Data', 'Exame', 'Sinistrado', 'NIF', 'Caixa'])
+    ws.append(['ID', 'Data', 'Exame', 'Sinistrado', 'NIF', 'Caixa', 'Link imagens'])
     for e in qs:
-        ws.append([e.id, str(e.data_exame), getattr(e.nome_exame, 'nome_exame', ''), e.nome_sinistrado.nome_sinistrado, e.nome_sinistrado.numero_nif, e.caixa])
+        ws.append([e.id, str(e.data_exame), getattr(e.nome_exame, 'nome_exame', ''), e.nome_sinistrado.nome_sinistrado, e.nome_sinistrado.numero_nif, e.caixa, e.nome_sinistrado.link_imagem])
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="exames.xlsx"'
     wb.save(response)
