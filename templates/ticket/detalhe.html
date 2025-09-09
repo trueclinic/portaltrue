@@ -15,8 +15,17 @@
     <p><strong>Atendido por:</strong> {% if ticket.atribuido_para %}{{ ticket.atribuido_para.get_full_name|default:ticket.atribuido_para.username }}{% else %}-{% endif %}</p>
     <p><strong>Título:</strong> {{ ticket.titulo }}</p>
     <p><strong>Descrição:</strong><br>{{ ticket.descricao|linebreaks }}</p>
-    <p><strong>Prioridade:</strong> {{ ticket.get_prioridade_display }}</p>
-    <p><strong>Status:</strong> {{ ticket.get_status_display }}</p>
+    <p><strong>Prioridade:</strong> {{ ticket.get_prioridade_display }} · <strong>Status:</strong> {{ ticket.get_status_display }}</p>
+    {% if request.user.is_staff %}
+    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+      <form method="post" style="display:inline">{% csrf_token %}<input type="hidden" name="prioridade" value="alta" /><button class="btn btn-secondary">Marcar alta</button></form>
+      <form method="post" style="display:inline">{% csrf_token %}<input type="hidden" name="status" value="em_andamento" /><button class="btn btn-secondary">Em andamento</button></form>
+      <form method="post" style="display:inline">{% csrf_token %}<input type="hidden" name="status" value="resolvido" /><button class="btn btn-secondary">Resolver</button></form>
+      {% if not ticket.atribuido_para %}
+      <form method="post" style="display:inline">{% csrf_token %}<input type="hidden" name="atribuido_para" value="{{ request.user.id }}" /><button class="btn btn-secondary">Atribuir a mim</button></form>
+      {% endif %}
+    </div>
+    {% endif %}
   </div>
 
   {% if request.user.is_staff %}
@@ -35,7 +44,7 @@
     <div>
       {% for c in ticket.comentarios.all %}
         <div style="border-bottom:1px solid #ECECEC;padding:8px 0">
-          <div style="font-size:13px;color:#1B2B45">{{ c.autor }} · {{ c.criado_em }}</div>
+          <div style="font-size:13px;color:#1B2B45">{{ c.autor }} · {{ c.criado_em|date:"d/m H:i" }}</div>
           <div>{{ c.mensagem|linebreaks }}</div>
         </div>
       {% empty %}
@@ -53,7 +62,7 @@
     <h3 style="margin-top:0">Anexos</h3>
     <ul>
       {% for a in ticket.anexos.all %}
-        <li><a href="{{ a.ficheiro.url }}" target="_blank">{{ a.ficheiro.name }}</a> ({{ a.enviado_em }})</li>
+        <li><a href="{{ a.ficheiro.url }}" target="_blank">{{ a.ficheiro.name }}</a> ({{ a.enviado_em|date:"d/m H:i" }})</li>
       {% empty %}
         <li>Sem anexos.</li>
       {% endfor %}

@@ -10,12 +10,14 @@
       <a class="btn" href="{% url 'ticket:criar' %}">Novo ticket</a>
     </div>
   </div>
+
   <div class="kpi-grid" style="margin-bottom:8px">
-    <div class="kpi-card"><div class="ico">🎫</div><div class="meta"><div class="val">{{ status_counts.aberto|default:0 }}</div><div class="lbl">Abertos</div></div></div>
-    <div class="kpi-card"><div class="ico">🛠</div><div class="meta"><div class="val">{{ status_counts.em_andamento|default:0 }}</div><div class="lbl">Em andamento</div></div></div>
-    <div class="kpi-card"><div class="ico">✅</div><div class="meta"><div class="val">{{ status_counts.resolvido|default:0 }}</div><div class="lbl">Resolvidos</div></div></div>
-    <div class="kpi-card"><div class="ico">⚠</div><div class="meta"><div class="val">{{ prioridade_counts.alta|default:0 }}</div><div class="lbl">Alta prioridade</div></div></div>
+    <a class="kpi-card" href="?status=aberto&prioridade=&assigned=&q="> <div class="ico">🎫</div><div class="meta"><div class="val">{{ status_counts.aberto|default:0 }}</div><div class="lbl">Abertos</div></div></a>
+    <a class="kpi-card" href="?status=em_andamento&prioridade=&assigned=&q="> <div class="ico">🛠</div><div class="meta"><div class="val">{{ status_counts.em_andamento|default:0 }}</div><div class="lbl">Em andamento</div></div></a>
+    <a class="kpi-card" href="?status=resolvedo&prioridade=&assigned=&q="> <div class="ico">✅</div><div class="meta"><div class="val">{{ status_counts.resolvido|default:0 }}</div><div class="lbl">Resolvidos</div></div></a>
+    <a class="kpi-card" href="?status=&prioridade=alta&assigned=&q="> <div class="ico">⚠</div><div class="meta"><div class="val">{{ prioridade_counts.alta|default:0 }}</div><div class="lbl">Alta prioridade</div></div></a>
   </div>
+
   <form method="get" class="card" style="margin-bottom:12px;display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
     <div>
       <label>Status</label>
@@ -53,16 +55,23 @@
     <button class="btn" type="submit">Filtrar</button>
     <a class="btn btn-secondary" href="?">Limpar</a>
   </form>
+
   <table class="table">
     <thead>
-      <tr><th>Título</th><th>Reportado por</th><th>Atendido por</th><th>Prioridade</th><th>Status</th><th>Criado em</th><th>Última interação</th></tr>
+      <tr><th>Título</th><th>Reportado por</th><th>Atendido por</th><th>Prioridade</th><th>Status</th><th>Criado</th><th>Última</th></tr>
     </thead>
     <tbody>
     {% for t in tickets %}
       <tr>
         <td><a href="{% url 'ticket:detalhe' t.id %}">{{ t.titulo }}</a></td>
         <td>{{ t.reporter_nome|default:t.criado_por.username }}<br/><small>{{ t.reporter_email|default:t.criado_por.email }}</small></td>
-        <td>{% if t.atribuido_para %}{{ t.atribuido_para.get_full_name|default:t.atribuido_para.username }}{% else %}-{% endif %}</td>
+        <td>
+          {% if t.atribuido_para %}
+            {{ t.atribuido_para.get_full_name|default:t.atribuido_para.username }}
+          {% elif request.user.is_staff %}
+            <a href="{% url 'ticket:detalhe' t.id %}?assign=me" class="btn btn-secondary">Atribuir a mim</a>
+          {% else %}-{% endif %}
+        </td>
         <td>
           {% if t.prioridade == 'alta' %}<span class="badge badge-pri-high">Alta</span>
           {% elif t.prioridade == 'media' %}<span class="badge badge-pri-medium">Média</span>
@@ -74,8 +83,8 @@
           {% elif t.status == 'resolvido' %}<span class="badge badge-resolved">Resolvido</span>
           {% else %}<span class="badge badge-closed">Fechado</span>{% endif %}
         </td>
-        <td>{{ t.criado_em }}</td>
-        <td>{{ t.ultima_interacao }}</td>
+        <td>{{ t.criado_em|date:"d/m H:i" }}</td>
+        <td>{{ t.ultima_interacao|date:"d/m H:i" }}</td>
       </tr>
     {% empty %}
       <tr><td colspan="8">Sem tickets.</td></tr>

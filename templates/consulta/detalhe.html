@@ -10,7 +10,7 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
       <div>
         <strong>Data</strong>
-        <div>{{ exame.data_exame }}</div>
+        <div>{{ exame.data_exame|date:"d/m/Y" }}</div>
       </div>
       <div>
         <strong>Exame</strong>
@@ -30,6 +30,17 @@
       </div>
     </div>
   </div>
+
+  {% if relacionados %}
+  <div class="card" style="margin-top:12px">
+    <h3 style="margin:0 0 8px">Exames relacionados deste sinistrado</h3>
+    <ul>
+      {% for r in relacionados %}
+      <li><a href="{% url 'consulta:detalhe' r.id %}">{{ r.data_exame|date:"d/m/Y" }} · {{ r.nome_exame.nome_exame }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 {% endblock %}
 
 

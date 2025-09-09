@@ -5,6 +5,8 @@
   <div class="card" style="margin-bottom:12px;display:flex;gap:8px;align-items:center;justify-content:space-between">
     <h2 style="margin:0">Exames</h2>
     <div style="display:flex;gap:8px;align-items:center">
+      <a class="btn btn-secondary" href="{% url 'consulta:export_csv' %}?nome={{ f_nome }}&nif={{ f_nif }}&data={{ f_data }}">Exportar CSV</a>
+      <a class="btn btn-secondary" href="{% url 'consulta:export_xlsx' %}?nome={{ f_nome }}&nif={{ f_nif }}&data={{ f_data }}">Exportar XLSX</a>
       <a class="btn btn-secondary" href="?">Limpar</a>
       {% if request.user.is_staff %}
         <a class="btn" href="{% url 'consulta:criar' %}">Novo exame</a>
@@ -12,8 +14,8 @@
     </div>
   </div>
   <div class="kpi-grid" style="margin-bottom:8px">
-    <div class="kpi-card"><div class="ico">📅</div><div class="meta"><div class="val">{{ kpi_exames.hoje }}</div><div class="lbl">Hoje</div></div></div>
-    <div class="kpi-card"><div class="ico">📈</div><div class="meta"><div class="val">{{ kpi_exames.semana }}</div><div class="lbl">Esta semana</div></div></div>
+    <a class="kpi-card" href="?data={{ today|date:'Y-m-d' }}"> <div class="ico">📅</div><div class="meta"><div class="val">{{ kpi_exames.hoje }}</div><div class="lbl">Hoje</div></div></a>
+    <a class="kpi-card" href="?range=week"> <div class="ico">📈</div><div class="meta"><div class="val">{{ kpi_exames.semana }}</div><div class="lbl">Esta semana</div></div></a>
     <div class="kpi-card"><div class="ico">🧪</div><div class="meta"><div class="val">{{ kpi_exames.total }}</div><div class="lbl">Total</div></div></div>
   </div>
 
@@ -41,7 +43,7 @@
     {% for e in exames %}
       <tr>
         <td><a href="{% url 'consulta:detalhe' e.id %}">{{ e.nome_sinistrado.nome_sinistrado }}</a></td>
-        <td>{{ e.data_exame }}</td>
+        <td>{{ e.data_exame|date:"d/m/Y" }}</td>
         <td>{{ e.nome_exame.nome_exame }}</td>
         <td>{{ e.nome_sinistrado.numero_nif }}</td>
         <td>{{ e.caixa }}</td>

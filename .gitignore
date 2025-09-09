@@ -131,3 +131,9 @@ dmypy.json
 .idea/
 # Django static build output
 staticfiles/
+
+# Local secrets (não versionar)
+.az_secret
+.az_appid
+.az_tenant
+.env.heroku

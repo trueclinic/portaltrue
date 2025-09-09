@@ -86,6 +86,8 @@ def processar_emails_graph() -> int:
             criado_por=user,
             prioridade='media',
             status='aberto',
+            reporter_nome=(user.get_full_name() or user.username),
+            reporter_email=sender,
         )
         created += 1
 
@@ -102,7 +104,7 @@ def processar_emails_graph() -> int:
             fail_silently=False,
         )
 
-        # Marca como lida
-        _graph_post(f"{base}/users/{GRAPH_USER_ID}/messages/{msg_id}/read", {})
+        # Marca como lida (isRead=true)
+        _graph_post(f"{base}/users/{GRAPH_USER_ID}/messages/{msg_id}", {"isRead": True})
 
     return created

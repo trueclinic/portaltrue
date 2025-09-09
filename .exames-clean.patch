@@ -1,0 +1,457 @@
+diff --git a/.DS_Store b/.DS_Store
+index 9d424d728c9d96264455b3279eeb93995ca92850..0a7d3775111c4d036ca5541d89bfd98228eab7fc 100644
+GIT binary patch
+literal 10244
+zcmeHM&x<2P6n>pdW;)CW5fl^=TlS#hxF++%RXiB8Bko0!jVQXxY_f^7VUl#nkD0?b
+z(sw;9=vBx+Ac)|>n>R0lUKB)>MRY*~uX+&mdsQ{DUv>A)!Y;;@D(HTluCMBS_0_AY
+zt_l%(wMnZ&6cCY*i*0EIx0J;Bd?ixOyg3K!p*(eWD)mcYZ;(K`7fu1EfK$LJ;1qBQ
+z{8tpfn$5{y*4Evf0!{&^z)S(29|Bx#tHws!s;L7vwFQ7(z-yK8T;d1Vz}Tv>k+#S|
+z@^n#HUDPvM3{Mxw`@rC;#zxxe;^djlhi5!{W{2V_@2EdeaPq3!y1P@rDUeiv_wEaH
+zns%r|W3hi<d9xhP>xEle&2HGlI}Ekx_TSe&ds^nVj?Eujj-3rWq>cy*@Y|slwW%RI
+z)5=GvIhJere((AFly89$-cu05znadJhdp@j(_Y-a|48jO<KN_3{(pY<^vwSZA^fKx
+z;{J<QF2Vt=P=h8kRt&~a;u3zhD5PPW4bl74<FFRDFRto-$*j8<3Z^IG<Gjhc!n_M$
+z8d4A3d(HjPz(mC-%|W*_8kfsod%65VVR6a#{bm34`sHxHK5mRBqgrElfq%UihTZ1T
+zbEElEr@g;jy5nrvA2&Mv_D~h*wAz5Y_Hw7+3ioT_q~98;vUQ!|7mLO1(%lCKmG$-2
+zV10A*a5cblxw0BOR@pc_Ec$nzdi2Tj+q>OfKYW`xV?{742i>NB&+hNwDb^$@{$C%<
+zTq!rb`{O+(6lRi0fzuE|(wrFzv+{fOVZR&pci@*9FDkM7^acWC=l>$NXp|KE?9gts
+zCHc8ubcBmKEYVXjLUx+MjTF}s-Z#RJ5a(Tt(#G7ye_~@bSbKc^Mq@qEFxdfb-49_B
+z7}*KYtAFSzFa;;3mrR`K4DSW*j6_{lhb&<XG|&+f8p4hwYp#GSgyc-yKj^WVK*bqn
+zp#)#$jFvGXd0b+`#$?FM)D%ANFj+fu24S*s!(o!qJR!Tc`yI5%KuY<eYtQMB$wbGy
+z;Uu)^j{KB6B%@v{hzjVcHdfh={mpULx2PkQYq5XotD}j2R$k6IQ3^t^q<~p2(FpU(
+z5dH@U7%PYi{B>m^EFPbJqi4SaN~o8Cl6*?cXAyibx9Q-Wcj(@%)m$`61Z@8NPj;g%
+zfj9ruVJhmdx;hmj#La)05Z4OC<+$)_b?+iDWkB3}z;kg1Qu3x(t{x4qScm>ouWZ3d
+zXwjBaUvgWD2$41h&j5=dhl|aXK6oG<W%2y{nhxNU`YeveAO$~f%KR2}2-7Z@jprT6
+zH){?SjS_+E`QO`(mO@7l|9bSDq!%V7jFdPXBgD;B;YNyU1v2NmbSo;5*Q5hJ|9>X?
+z|NmRDX^yi~z$tK@3U~`!^{pDfeBO|ja(Efwx`>Mt<05TU5!@KU@6~ZUe(-VpgXUeC
+zEhpqxjg7Qb#qnMhht;R~|HhvIQzjtJ5Uh1Au^pZFM@7Z$|J9eL+y5VXBzm3So__;I
+Cw--+U
+
+delta 875
+zcmZn(XbG6$&uFtTU^hRb&14<{$$HKsoeT^NEDU-K=?s|+CAs-7E=f80NkB0U28M<r
+z3CZJ*sPZXz<qI+lgOl@f3xIkU7-TkpNLHZPnG7imsSJrZ=}58+oVOSl>XD_<ESFB_
+z2V0J0KyE&Y^;lG(IDjDl=72Jw^?3|s$PQq$H2uPm2yq`&8r1;|X0wIh4uGpbb^taN
+z$PQr7zrZkggP_dh1%iA`QawPXHgnZ%p~?3Ib-^^BkTw&;hsoALADI43o~$b@%RHw*
+zVzRHWJebZGmSarV+$YS($Yg9Vd7g+obIBT^$p=If!SoXm1;z=RSw$rnnF3iS%Zn*+
+zJn67|rUr~JAV+L+tQZ#?L|}5Rm<pr7<Vj*Gll>*cC&!AvWfD`E>?5JU#;{2mq})eB
+zMhL}MFkvZvWX~`#6->S;k;uX@f1$u+Gf6oJBSKPnGPl$RCPUlFf2HJ^8x{#nmX}sk
+z0n*^0V`C_0C;^6Y2`~vHqnO4VFgZoqg<0al_Q{RXQX;59->_gVP(M@x*=-03RJX}Z
+zm~0@U%EVMMxlu-9a=r`?OT)7N{FCct)Yw1_pjn18VyIde1SVgQdA8Y3?j+;Jf)$LL
+M*%kh>P%T8I07m-ZLI3~&
+
+diff --git a/.gitignore b/.gitignore
+index 244cd04..0a9fffc 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -131,3 +131,9 @@ dmypy.json
+ .idea/
+ # Django static build output
+ staticfiles/
++
++# Local secrets (não versionar)
++.az_secret
++.az_appid
++.az_tenant
++.env.heroku
+diff --git a/config/settings.py b/config/settings.py
+index de5f608..645364e 100644
+--- a/config/settings.py
++++ b/config/settings.py
+@@ -37,7 +37,7 @@ CLOUDINARY_STORAGE = {
+     'API_KEY': config('CLOUDINARY_API_KEY'),
+     'API_SECRET': config('CLOUDINARY_API_SECRET'),
+ }
+-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage',
++DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+ 
+ # Aplicações
+ INSTALLED_APPS = [
+@@ -146,6 +146,10 @@ EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
+ EMAIL_TIMEOUT = config('EMAIL_TIMEOUT', default=30, cast=int)
+ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
+ 
++# Ambiente de desenvolvimento: não tentar SMTP real e imprimir e-mails no console
++if DEBUG:
++    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
++
+ # Redirecionamentos de autenticação
+ LOGIN_REDIRECT_URL = '/dashboard/'
+ LOGIN_URL = '/'
+diff --git a/consulta/urls.py b/consulta/urls.py
+index 7fffb18..1294d21 100644
+--- a/consulta/urls.py
++++ b/consulta/urls.py
+@@ -22,4 +22,6 @@ urlpatterns = [
+     path('exames/', views.lista_exames, name='lista'),
+     path('exames/novo/', views.criar_exame, name='criar'),
+     path('exames/<int:exame_id>/', views.detalhe_exame, name='detalhe'),
++    path('exames/export/csv/', views.exportar_exames_csv, name='export_csv'),
++    path('exames/export/xlsx/', views.exportar_exames_xlsx, name='export_xlsx'),
+ ]
+\ No newline at end of file
+diff --git a/consulta/views.py b/consulta/views.py
+index eff8a5a..d13cfdd 100644
+--- a/consulta/views.py
++++ b/consulta/views.py
+@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
+ from django.contrib.auth.decorators import login_required, user_passes_test
+ from django.http import HttpResponseForbidden
+ from django.core.paginator import Paginator
++from openpyxl import Workbook
++import csv
+ from django.db.models import Q
+ from .models import RegistoExames, NomeSinistrado
+ from django import forms
+@@ -12,13 +14,13 @@ from django.utils import timezone
+ from datetime import timedelta
+ 
+ 
+-@login_required
+-def lista_exames(request):
++def _query_exames(request):
+     qs = RegistoExames.objects.select_related('nome_exame', 'nome_sinistrado').order_by('-data_exame', '-id')
+ 
+     f_nome = (request.GET.get('nome') or '').strip()
+     f_nif = (request.GET.get('nif') or '').strip()
+     f_data = (request.GET.get('data') or '').strip()
++    f_range = (request.GET.get('range') or '').strip()
+ 
+     if f_nome:
+         qs = qs.filter(Q(nome_sinistrado__nome_sinistrado__icontains=f_nome) | Q(nome_exame__nome_exame__icontains=f_nome))
+@@ -26,6 +28,17 @@ def lista_exames(request):
+         qs = qs.filter(nome_sinistrado__numero_nif__icontains=f_nif)
+     if f_data:
+         qs = qs.filter(data_exame=f_data)
++    if f_range == 'week':
++        today = timezone.localdate()
++        week_start = today - timedelta(days=today.weekday())
++        qs = qs.filter(data_exame__gte=week_start, data_exame__lte=today)
++
++    return qs
++
++
++@login_required
++def lista_exames(request):
++    qs = _query_exames(request)
+ 
+     paginator = Paginator(qs, 12)
+     page_obj = paginator.get_page(request.GET.get('page'))
+@@ -43,17 +56,21 @@ def lista_exames(request):
+         'exames': page_obj.object_list,
+         'page_obj': page_obj,
+         'paginator': paginator,
+-        'f_nome': f_nome,
+-        'f_nif': f_nif,
+-        'f_data': f_data,
++        'f_nome': (request.GET.get('nome') or '').strip(),
++        'f_nif': (request.GET.get('nif') or '').strip(),
++        'f_data': (request.GET.get('data') or '').strip(),
+         'kpi_exames': kpi_exames,
++        'today': today,
+     })
+ 
+ 
+ @login_required
+ def detalhe_exame(request, exame_id: int):
+     exame = get_object_or_404(RegistoExames.objects.select_related('nome_exame', 'nome_sinistrado'), id=exame_id)
+-    return render(request, 'consulta/detalhe.html', {'exame': exame})
++    relacionados = RegistoExames.objects.select_related('nome_exame').filter(
++        nome_sinistrado=exame.nome_sinistrado
++    ).exclude(id=exame.id).order_by('-data_exame')[:8]
++    return render(request, 'consulta/detalhe.html', {'exame': exame, 'relacionados': relacionados})
+ 
+ 
+ class NomeSinistradoForm(forms.ModelForm):
+@@ -103,3 +120,31 @@ def criar_exame(request):
+         sin_form = NomeSinistradoForm()
+         formset = RegistoExamesFormSet(prefix='exames')
+     return render(request, 'consulta/criar.html', {'sin_form': sin_form, 'formset': formset})
++
++
++@login_required
++def exportar_exames_csv(request):
++    qs = _query_exames(request)
++    response = render(request, 'consulta/lista.html')  # placeholder to get response object
++    response = HttpResponse(content_type='text/csv')
++    response['Content-Disposition'] = 'attachment; filename="exames.csv"'
++    writer = csv.writer(response)
++    writer.writerow(['ID', 'Data', 'Exame', 'Sinistrado', 'NIF', 'Caixa'])
++    for e in qs:
++        writer.writerow([e.id, e.data_exame, getattr(e.nome_exame, 'nome_exame', ''), e.nome_sinistrado.nome_sinistrado, e.nome_sinistrado.numero_nif, e.caixa])
++    return response
++
++
++@login_required
++def exportar_exames_xlsx(request):
++    qs = _query_exames(request)
++    wb = Workbook()
++    ws = wb.active
++    ws.title = 'Exames'
++    ws.append(['ID', 'Data', 'Exame', 'Sinistrado', 'NIF', 'Caixa'])
++    for e in qs:
++        ws.append([e.id, str(e.data_exame), getattr(e.nome_exame, 'nome_exame', ''), e.nome_sinistrado.nome_sinistrado, e.nome_sinistrado.numero_nif, e.caixa])
++    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
++    response['Content-Disposition'] = 'attachment; filename="exames.xlsx"'
++    wb.save(response)
++    return response
+diff --git a/static/.DS_Store b/static/.DS_Store
+index 6276e4a15a0a551839223c5ed65c9f06a777c4c1..ccc9ee0903db5df9857e953298157b5332bf305c 100644
+GIT binary patch
+delta 200
+zcmZoMXfc=|#>B)qu~2NHo+3XR0|Nsi1A_pAVQ_MOZo%e{jB6R|L4wQ-&J4i}!8z#=
+z37`lN$m|0WP?_9(7nh`*{3M_V2LnTc=|8>Wj>xhpcw`GQkWEzpY6F^@$&kyCo>X33
+muvv<+mUS~b2R{eUoj@0TXP(S2V#xt?CJ-?&Yz`3F!VCcLx+<Um
+
+delta 84
+zcmZoMXfc=|#>B`mF;Q%yo}wrd0|Nsi1A_oVaY0f}eiD$kGpS%=;_}G`A}pKhnL1cE
+j78EdUX6NAN0P5MC$o!poGQWr=2T&bI8`I_hkuA&sVSW?4
+
+diff --git a/templates/403.html b/templates/403.html
+index 2393109..4a0c501 100644
+--- a/templates/403.html
++++ b/templates/403.html
+@@ -21,3 +21,5 @@
+ 
+ 
+ 
++
++
+diff --git a/templates/consulta/criado.html b/templates/consulta/criado.html
+index 11251d0..715534e 100644
+--- a/templates/consulta/criado.html
++++ b/templates/consulta/criado.html
+@@ -19,3 +19,5 @@
+ 
+ 
+ 
++
++
+diff --git a/templates/consulta/detalhe.html b/templates/consulta/detalhe.html
+index ea9eeb2..a00a954 100644
+--- a/templates/consulta/detalhe.html
++++ b/templates/consulta/detalhe.html
+@@ -10,7 +10,7 @@
+     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+       <div>
+         <strong>Data</strong>
+-        <div>{{ exame.data_exame }}</div>
++        <div>{{ exame.data_exame|date:"d/m/Y" }}</div>
+       </div>
+       <div>
+         <strong>Exame</strong>
+@@ -30,6 +30,17 @@
+       </div>
+     </div>
+   </div>
++
++  {% if relacionados %}
++  <div class="card" style="margin-top:12px">
++    <h3 style="margin:0 0 8px">Exames relacionados deste sinistrado</h3>
++    <ul>
++      {% for r in relacionados %}
++      <li><a href="{% url 'consulta:detalhe' r.id %}">{{ r.data_exame|date:"d/m/Y" }} · {{ r.nome_exame.nome_exame }}</a></li>
++      {% endfor %}
++    </ul>
++  </div>
++  {% endif %}
+ {% endblock %}
+ 
+ 
+diff --git a/templates/consulta/lista.html b/templates/consulta/lista.html
+index ef1ebf8..eee0e26 100644
+--- a/templates/consulta/lista.html
++++ b/templates/consulta/lista.html
+@@ -5,6 +5,8 @@
+   <div class="card" style="margin-bottom:12px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+     <h2 style="margin:0">Exames</h2>
+     <div style="display:flex;gap:8px;align-items:center">
++      <a class="btn btn-secondary" href="{% url 'consulta:export_csv' %}?nome={{ f_nome }}&nif={{ f_nif }}&data={{ f_data }}">Exportar CSV</a>
++      <a class="btn btn-secondary" href="{% url 'consulta:export_xlsx' %}?nome={{ f_nome }}&nif={{ f_nif }}&data={{ f_data }}">Exportar XLSX</a>
+       <a class="btn btn-secondary" href="?">Limpar</a>
+       {% if request.user.is_staff %}
+         <a class="btn" href="{% url 'consulta:criar' %}">Novo exame</a>
+@@ -12,8 +14,8 @@
+     </div>
+   </div>
+   <div class="kpi-grid" style="margin-bottom:8px">
+-    <div class="kpi-card"><div class="ico">📅</div><div class="meta"><div class="val">{{ kpi_exames.hoje }}</div><div class="lbl">Hoje</div></div></div>
+-    <div class="kpi-card"><div class="ico">📈</div><div class="meta"><div class="val">{{ kpi_exames.semana }}</div><div class="lbl">Esta semana</div></div></div>
++    <a class="kpi-card" href="?data={{ today|date:'Y-m-d' }}"> <div class="ico">📅</div><div class="meta"><div class="val">{{ kpi_exames.hoje }}</div><div class="lbl">Hoje</div></div></a>
++    <a class="kpi-card" href="?range=week"> <div class="ico">📈</div><div class="meta"><div class="val">{{ kpi_exames.semana }}</div><div class="lbl">Esta semana</div></div></a>
+     <div class="kpi-card"><div class="ico">🧪</div><div class="meta"><div class="val">{{ kpi_exames.total }}</div><div class="lbl">Total</div></div></div>
+   </div>
+ 
+@@ -41,7 +43,7 @@
+     {% for e in exames %}
+       <tr>
+         <td><a href="{% url 'consulta:detalhe' e.id %}">{{ e.nome_sinistrado.nome_sinistrado }}</a></td>
+-        <td>{{ e.data_exame }}</td>
++        <td>{{ e.data_exame|date:"d/m/Y" }}</td>
+         <td>{{ e.nome_exame.nome_exame }}</td>
+         <td>{{ e.nome_sinistrado.numero_nif }}</td>
+         <td>{{ e.caixa }}</td>
+diff --git a/templates/ticket/detalhe.html b/templates/ticket/detalhe.html
+index d5863ce..514105e 100644
+--- a/templates/ticket/detalhe.html
++++ b/templates/ticket/detalhe.html
+@@ -15,8 +15,17 @@
+     <p><strong>Atendido por:</strong> {% if ticket.atribuido_para %}{{ ticket.atribuido_para.get_full_name|default:ticket.atribuido_para.username }}{% else %}-{% endif %}</p>
+     <p><strong>Título:</strong> {{ ticket.titulo }}</p>
+     <p><strong>Descrição:</strong><br>{{ ticket.descricao|linebreaks }}</p>
+-    <p><strong>Prioridade:</strong> {{ ticket.get_prioridade_display }}</p>
+-    <p><strong>Status:</strong> {{ ticket.get_status_display }}</p>
++    <p><strong>Prioridade:</strong> {{ ticket.get_prioridade_display }} · <strong>Status:</strong> {{ ticket.get_status_display }}</p>
++    {% if request.user.is_staff %}
++    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
++      <form method="post" style="display:inline">{% csrf_token %}<input type="hidden" name="prioridade" value="alta" /><button class="btn btn-secondary">Marcar alta</button></form>
++      <form method="post" style="display:inline">{% csrf_token %}<input type="hidden" name="status" value="em_andamento" /><button class="btn btn-secondary">Em andamento</button></form>
++      <form method="post" style="display:inline">{% csrf_token %}<input type="hidden" name="status" value="resolvido" /><button class="btn btn-secondary">Resolver</button></form>
++      {% if not ticket.atribuido_para %}
++      <form method="post" style="display:inline">{% csrf_token %}<input type="hidden" name="atribuido_para" value="{{ request.user.id }}" /><button class="btn btn-secondary">Atribuir a mim</button></form>
++      {% endif %}
++    </div>
++    {% endif %}
+   </div>
+ 
+   {% if request.user.is_staff %}
+@@ -35,7 +44,7 @@
+     <div>
+       {% for c in ticket.comentarios.all %}
+         <div style="border-bottom:1px solid #ECECEC;padding:8px 0">
+-          <div style="font-size:13px;color:#1B2B45">{{ c.autor }} · {{ c.criado_em }}</div>
++          <div style="font-size:13px;color:#1B2B45">{{ c.autor }} · {{ c.criado_em|date:"d/m H:i" }}</div>
+           <div>{{ c.mensagem|linebreaks }}</div>
+         </div>
+       {% empty %}
+@@ -53,7 +62,7 @@
+     <h3 style="margin-top:0">Anexos</h3>
+     <ul>
+       {% for a in ticket.anexos.all %}
+-        <li><a href="{{ a.ficheiro.url }}" target="_blank">{{ a.ficheiro.name }}</a> ({{ a.enviado_em }})</li>
++        <li><a href="{{ a.ficheiro.url }}" target="_blank">{{ a.ficheiro.name }}</a> ({{ a.enviado_em|date:"d/m H:i" }})</li>
+       {% empty %}
+         <li>Sem anexos.</li>
+       {% endfor %}
+diff --git a/templates/ticket/lista.html b/templates/ticket/lista.html
+index 839ed4e..d4b49ed 100644
+--- a/templates/ticket/lista.html
++++ b/templates/ticket/lista.html
+@@ -10,12 +10,14 @@
+       <a class="btn" href="{% url 'ticket:criar' %}">Novo ticket</a>
+     </div>
+   </div>
++
+   <div class="kpi-grid" style="margin-bottom:8px">
+-    <div class="kpi-card"><div class="ico">🎫</div><div class="meta"><div class="val">{{ status_counts.aberto|default:0 }}</div><div class="lbl">Abertos</div></div></div>
+-    <div class="kpi-card"><div class="ico">🛠</div><div class="meta"><div class="val">{{ status_counts.em_andamento|default:0 }}</div><div class="lbl">Em andamento</div></div></div>
+-    <div class="kpi-card"><div class="ico">✅</div><div class="meta"><div class="val">{{ status_counts.resolvido|default:0 }}</div><div class="lbl">Resolvidos</div></div></div>
+-    <div class="kpi-card"><div class="ico">⚠</div><div class="meta"><div class="val">{{ prioridade_counts.alta|default:0 }}</div><div class="lbl">Alta prioridade</div></div></div>
++    <a class="kpi-card" href="?status=aberto&prioridade=&assigned=&q="> <div class="ico">🎫</div><div class="meta"><div class="val">{{ status_counts.aberto|default:0 }}</div><div class="lbl">Abertos</div></div></a>
++    <a class="kpi-card" href="?status=em_andamento&prioridade=&assigned=&q="> <div class="ico">🛠</div><div class="meta"><div class="val">{{ status_counts.em_andamento|default:0 }}</div><div class="lbl">Em andamento</div></div></a>
++    <a class="kpi-card" href="?status=resolvedo&prioridade=&assigned=&q="> <div class="ico">✅</div><div class="meta"><div class="val">{{ status_counts.resolvido|default:0 }}</div><div class="lbl">Resolvidos</div></div></a>
++    <a class="kpi-card" href="?status=&prioridade=alta&assigned=&q="> <div class="ico">⚠</div><div class="meta"><div class="val">{{ prioridade_counts.alta|default:0 }}</div><div class="lbl">Alta prioridade</div></div></a>
+   </div>
++
+   <form method="get" class="card" style="margin-bottom:12px;display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+     <div>
+       <label>Status</label>
+@@ -53,16 +55,23 @@
+     <button class="btn" type="submit">Filtrar</button>
+     <a class="btn btn-secondary" href="?">Limpar</a>
+   </form>
++
+   <table class="table">
+     <thead>
+-      <tr><th>Título</th><th>Reportado por</th><th>Atendido por</th><th>Prioridade</th><th>Status</th><th>Criado em</th><th>Última interação</th></tr>
++      <tr><th>Título</th><th>Reportado por</th><th>Atendido por</th><th>Prioridade</th><th>Status</th><th>Criado</th><th>Última</th></tr>
+     </thead>
+     <tbody>
+     {% for t in tickets %}
+       <tr>
+         <td><a href="{% url 'ticket:detalhe' t.id %}">{{ t.titulo }}</a></td>
+         <td>{{ t.reporter_nome|default:t.criado_por.username }}<br/><small>{{ t.reporter_email|default:t.criado_por.email }}</small></td>
+-        <td>{% if t.atribuido_para %}{{ t.atribuido_para.get_full_name|default:t.atribuido_para.username }}{% else %}-{% endif %}</td>
++        <td>
++          {% if t.atribuido_para %}
++            {{ t.atribuido_para.get_full_name|default:t.atribuido_para.username }}
++          {% elif request.user.is_staff %}
++            <a href="{% url 'ticket:detalhe' t.id %}?assign=me" class="btn btn-secondary">Atribuir a mim</a>
++          {% else %}-{% endif %}
++        </td>
+         <td>
+           {% if t.prioridade == 'alta' %}<span class="badge badge-pri-high">Alta</span>
+           {% elif t.prioridade == 'media' %}<span class="badge badge-pri-medium">Média</span>
+@@ -74,8 +83,8 @@
+           {% elif t.status == 'resolvido' %}<span class="badge badge-resolved">Resolvido</span>
+           {% else %}<span class="badge badge-closed">Fechado</span>{% endif %}
+         </td>
+-        <td>{{ t.criado_em }}</td>
+-        <td>{{ t.ultima_interacao }}</td>
++        <td>{{ t.criado_em|date:"d/m H:i" }}</td>
++        <td>{{ t.ultima_interacao|date:"d/m H:i" }}</td>
+       </tr>
+     {% empty %}
+       <tr><td colspan="8">Sem tickets.</td></tr>
+diff --git a/ticket/scripts/processar_emails.py b/ticket/scripts/processar_emails.py
+index 1102711..0be7adc 100644
+--- a/ticket/scripts/processar_emails.py
++++ b/ticket/scripts/processar_emails.py
+@@ -51,9 +51,23 @@ def processar_emails():
+ 
+         # Verifica se o remetente está registado
+         try:
+-            user = User.objects.get(email=from_email)
++            user = User.objects.get(email__iexact=from_email)
+         except User.DoesNotExist:
+-            continue  # Ignora se o remetente não for conhecido
++            # Em desenvolvimento, opcionalmente faz fallback para um utilizador padrão
++            if settings.DEBUG:
++                # Usa o primeiro superuser/staff disponível ou cria um utilizador de fallback
++                user = (
++                    User.objects.filter(is_superuser=True).first()
++                    or User.objects.filter(is_staff=True).first()
++                )
++                if not user:
++                    user, _ = User.objects.get_or_create(
++                        username='dev-mail',
++                        defaults={'email': settings.EMAIL_HOST_USER or 'dev@example.com', 'is_staff': True}
++                    )
++            else:
++                # Em produção, ignora remetentes desconhecidos
++                continue
+ 
+         # Criar o ticket
+         ticket = Ticket.objects.create(
+@@ -61,7 +75,9 @@ def processar_emails():
+             descricao=body,
+             criado_por=user,
+             prioridade='media',
+-            status='aberto'
++            status='aberto',
++            reporter_nome=(user.get_full_name() or user.username),
++            reporter_email=from_email
+         )
+ 
+         # Envia resposta com número do ticket
+diff --git a/ticket/scripts/processar_emails_graph.py b/ticket/scripts/processar_emails_graph.py
+index e0001b3..3714431 100644
+--- a/ticket/scripts/processar_emails_graph.py
++++ b/ticket/scripts/processar_emails_graph.py
+@@ -86,6 +86,8 @@ def processar_emails_graph() -> int:
+             criado_por=user,
+             prioridade='media',
+             status='aberto',
++            reporter_nome=(user.get_full_name() or user.username),
++            reporter_email=sender,
+         )
+         created += 1
+ 
+@@ -102,7 +104,7 @@ def processar_emails_graph() -> int:
+             fail_silently=False,
+         )
+ 
+-        # Marca como lida
+-        _graph_post(f"{base}/users/{GRAPH_USER_ID}/messages/{msg_id}/read", {})
++        # Marca como lida (isRead=true)
++        _graph_post(f"{base}/users/{GRAPH_USER_ID}/messages/{msg_id}", {"isRead": True})
+ 
+     return created

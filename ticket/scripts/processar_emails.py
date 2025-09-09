@@ -51,9 +51,23 @@ def processar_emails():
 
         # Verifica se o remetente está registado
         try:
-            user = User.objects.get(email=from_email)
+            user = User.objects.get(email__iexact=from_email)
         except User.DoesNotExist:
-            continue  # Ignora se o remetente não for conhecido
+            # Em desenvolvimento, opcionalmente faz fallback para um utilizador padrão
+            if settings.DEBUG:
+                # Usa o primeiro superuser/staff disponível ou cria um utilizador de fallback
+                user = (
+                    User.objects.filter(is_superuser=True).first()
+                    or User.objects.filter(is_staff=True).first()
+                )
+                if not user:
+                    user, _ = User.objects.get_or_create(
+                        username='dev-mail',
+                        defaults={'email': settings.EMAIL_HOST_USER or 'dev@example.com', 'is_staff': True}
+                    )
+            else:
+                # Em produção, ignora remetentes desconhecidos
+                continue
 
         # Criar o ticket
         ticket = Ticket.objects.create(
@@ -61,7 +75,9 @@ def processar_emails():
             descricao=body,
             criado_por=user,
             prioridade='media',
-            status='aberto'
+            status='aberto',
+            reporter_nome=(user.get_full_name() or user.username),
+            reporter_email=from_email
         )
 
         # Envia resposta com número do ticket

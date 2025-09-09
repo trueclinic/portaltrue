@@ -22,4 +22,6 @@ urlpatterns = [
     path('exames/', views.lista_exames, name='lista'),
     path('exames/novo/', views.criar_exame, name='criar'),
     path('exames/<int:exame_id>/', views.detalhe_exame, name='detalhe'),
+    path('exames/export/csv/', views.exportar_exames_csv, name='export_csv'),
+    path('exames/export/xlsx/', views.exportar_exames_xlsx, name='export_xlsx'),
 ]
